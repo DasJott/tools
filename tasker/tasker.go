@@ -7,15 +7,15 @@ type Tasker struct {
 	tasks []func()
 }
 
-// Task creates a new Tasker and adds an async task
-func Task(f func()) *Tasker {
+// Add creates a new Tasker and adds one or more async tasks
+func Add(f ...func()) *Tasker {
 	t := &Tasker{}
-	return t.Task(f)
+	return t.Add(f...)
 }
 
-// Task adds an async task
-func (t *Tasker) Task(f func()) *Tasker {
-	t.tasks = append(t.tasks, f)
+// Add adds one or more async tasks
+func (t *Tasker) Add(f ...func()) *Tasker {
+	t.tasks = append(t.tasks, f...)
 	return t
 }
 
