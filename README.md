@@ -4,20 +4,22 @@
 one or more tasks running concurrently.
 ### example
 ```go
-tasker.Task(func() {
-	// whatever yiu want to do
-}).Task(func() {
-	// something else
-}).Wait()
+tasker.Add(
+	func() {
+		// whatever yiu want to do
+	},
+	func() {
+		// something else
+	},
+).Wait()
 // execution blocked until all tasks finish
 ```
 OR
 ```go
-fin := tasker.Task(func() {
+t := tasker.Add(func() {
 	// whatever yiu want to do
-}).Task(func() {
+}).Add(func() {
 	// something else
-}).Channel()
-// channel 'fin' can be asked whenever you want
+}).Later()
+// Later returns immediately and can be continued by calling t.Now()
 ```
-
