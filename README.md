@@ -1,5 +1,12 @@
 #tools
 
+## global
+things regarding globalization
+### contents
+- **ZoneMap**<br>
+  Map from timezone names to its offset on UTC (`map[string]time.Duration`)
+
+
 ## tasker
 one or more tasks running concurrently.
 ### example
@@ -17,9 +24,10 @@ tasker.Add(
 OR
 ```go
 t := tasker.Add(func() {
-	// whatever yiu want to do
+	// whatever you want to do
 }).Add(func() {
 	// something else
 }).Later()
 // Later returns immediately and can be continued by calling t.Now()
 ```
+
