@@ -55,8 +55,10 @@ func (s *Socket) read() {
 
 // Send can be used to send data to the connection
 func (s *Socket) Send(dataType MessageType, data []byte) {
-	if err := s.connection.WriteMessage(int(dataType), data); err != nil {
-		fmt.Println(err.Error())
+	if s.connection != nil {
+		if err := s.connection.WriteMessage(int(dataType), data); err != nil {
+			fmt.Println(err.Error())
+		}
 	}
 }
 
@@ -72,7 +74,7 @@ func (s *Socket) Handle(w http.ResponseWriter, r *http.Request) (err error) {
 	if err == nil && s.Receive != nil {
 		go s.read()
 	}
-
+	panic("YESS")
 	return err
 }
 
