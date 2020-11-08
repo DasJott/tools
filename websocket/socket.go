@@ -74,7 +74,6 @@ func (s *Socket) Handle(w http.ResponseWriter, r *http.Request) (err error) {
 	if err == nil && s.Receive != nil {
 		go s.read()
 	}
-	panic("YESS")
 	return err
 }
 
